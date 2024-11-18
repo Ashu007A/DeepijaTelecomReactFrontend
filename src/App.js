@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ConvoxLogin from './components/ConvoxLogin';
+import Dashboard from './components/ConVox/Dashboard';
+import Stations from './components/ConVox/Stations';
+import ProtectedRoute from './components/ConVox/ProtectedRoute';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <Routes>
+                <Route path="/convox/login" element={<ConvoxLogin />} />
+                <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+                <Route path="/convox/stations" element={<ProtectedRoute><Stations /></ProtectedRoute>} />
+                <Route path="/" element={<ConvoxLogin />} />
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;

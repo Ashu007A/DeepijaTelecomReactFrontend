@@ -1,0 +1,30 @@
+{
+  "Raipur": [
+    {"id": "Raipur", "name": "Raipur"},
+    {"id": "Aarang", "name": "Aarang"}
+  ],
+  "Bilaspur": [
+    {"id": "Bilaspur", "name": "Bilaspur"},
+    {"id": "Takhatpur", "name": "Takhatpur"}
+  ],
+  "Durg": [
+    {"id": "Bhilai", "name": "Bhilai"},
+    {"id": "Durg", "name": "Durg"}
+  ],
+  "Hyderabad": [
+    {"id": "Amberpet", "name": "Amberpet"},
+    {"id": "Bahadurpura", "name": "Bahadurpura"}
+  ],
+  "Secunderabad": [
+    {"id": "Serilingampally", "name": "Serilingampally"},
+    {"id": "Kukatpally", "name": "Kukatpally"}
+  ],
+  "Mumbai": [
+    {"id": "Andheri", "name": "Andheri"},
+    {"id": "Bandra", "name": "Bandra"}
+  ],
+  "Pune": [
+    {"id": "Ghatmatha", "name": "Ghatmatha"},
+    {"id": "Maval", "name": "Maval"}
+  ]
+}
