@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/images/ConVox/logo_convox_login.png';
 
@@ -50,6 +51,7 @@ const ConvoxLogin = () => {
 
     return (
         <div className="flex flex-col justify-between min-h-screen bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200">
+            <Helmet> <title>Login - ConVox</title> </Helmet>
             <div className="flex justify-center items-center flex-grow">
                 <div className="bg-white p-6 rounded-lg shadow-lg text-center w-96">
                     <img src={logo} alt="ConVox Logo" className="w-48 h-auto mx-auto mb-4" />

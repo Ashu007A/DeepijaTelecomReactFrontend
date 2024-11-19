@@ -27,6 +27,8 @@
 }
 .menu-section h3:hover {
     background-color: #6ffdfd;
+    height: 40px;
+    margin-top: 20px;
 }
 
 .grid {

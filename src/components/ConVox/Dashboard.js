@@ -69,26 +69,7 @@ const Dashboard = () => {
             toggleIcon.classList.remove('fa-caret-right');
             toggleIcon.classList.add('fa-caret-down');
         }
-    };
-
-    const confirmLogout = (event) => {
-        event.preventDefault();
-        const userConfirmed = window.confirm("Are you sure you want to log out?");
-        if (userConfirmed) {
-            fetch('http://localhost:8080/api/logout')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Failed to log out');
-                    }
-                    clearInterval(intervalId);
-                    navigate('/convox/login');
-                })
-                .catch(error => {
-                    console.error('Logout error:', error);
-                    alert('Failed to log out');
-                });
-        }
-    };    
+    };   
 
     const updateTime = () => {
         const now = new Date();
@@ -107,6 +88,62 @@ const Dashboard = () => {
             serverTimeElement.textContent = 'Server time - ' + formattedTime;
         }
     };
+
+    // const confirmLogout = (event) => {
+    //     event.preventDefault();
+    //     const userConfirmed = window.confirm("Are you sure you want to log out?");
+    //     if (userConfirmed) {
+    //         fetch('http://localhost:8080/api/logout')
+    //             .then(response => {
+    //                 if (!response.ok) {
+    //                     throw new Error('Failed to log out');
+    //                 }
+    //                 clearInterval(intervalId);
+    //                 navigate('/convox/login');
+    //             })
+    //             .catch(error => {
+    //                 console.error('Logout error:', error);
+    //                 alert('Failed to log out');
+    //             });
+    //     }
+    // };
+
+    const confirmLogout = (event) => {
+        event.preventDefault();
+        const userConfirmed = window.confirm("Are you sure you want to log out?");
+        if (userConfirmed) {
+            const token = localStorage.getItem('jwt');
+            fetch('http://localhost:8080/api/logout', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to log out');
+                    }
+    
+                    // Clear cache and manipulate history
+                    window.localStorage.clear();
+                    window.sessionStorage.clear();
+    
+                    // Replace current URL with the login URL
+                    window.location.replace('/convox/login');
+                    
+                    // Alternatively use pushState to manipulate history
+                    window.history.pushState(null, null, '/convox/login');
+    
+                    // Clear intervals
+                    clearInterval(intervalId);
+                })
+                .catch(error => {
+                    console.error('Logout error:', error);
+                    alert('Failed to log out');
+                });
+        }
+    };       
 
     return (
         <div className="grid min-h-screen grid-cols-[auto,1fr] grid-rows-[auto,1fr,auto]">

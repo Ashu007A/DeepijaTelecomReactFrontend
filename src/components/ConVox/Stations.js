@@ -84,25 +84,6 @@ const Stations = () => {
         }
     };
 
-    const confirmLogout = (event) => {
-        event.preventDefault();
-        const userConfirmed = window.confirm("Are you sure you want to log out?");
-        if (userConfirmed) {
-            fetch('http://localhost:8080/api/logout')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Failed to log out');
-                    }
-                    clearInterval(intervalId);
-                    navigate('/convox/login');
-                })
-                .catch(error => {
-                    console.error('Logout error:', error);
-                    alert('Failed to log out');
-                });
-        }
-    };
-
     const handleAddStation = () => {
         resetForm();
         setShowAddForm(true);
@@ -167,38 +148,62 @@ const Stations = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch('http://localhost:8080/api/stations', {
-            method: showAddForm ? 'POST' : 'PUT',
+        const url = showAddForm ? 'http://localhost:8080/api/stations' : `http://localhost:8080/api/stations/${station.id}`;
+        const method = showAddForm ? 'POST' : 'PUT';
+    
+        console.log('Submitting station:', station);
+        console.log('URL:', url);
+        console.log('Method:', method);
+    
+        fetch(url, {
+            method: method,
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(station),
         })
-            .then(response => response.json())
-            .then(data => {
-                if (showAddForm) {
-                    setStations([...stations, data]);
-                } else {
-                    setStations(stations.map(st => st.id === data.id ? data : st));
+            .then(response => {
+                console.log('Response status:', response.status);
+                if (!response.ok) {
+                    throw new Error('Failed to submit');
                 }
-                resetForm();
+                return response.json();
+            })
+            .then(data => {
+                window.location.reload();
+                // console.log('Received data:', data);
+                // if (showAddForm) {
+                //     setStations([...stations, data]);
+                // } else {
+                //     // Properly update the station in the list
+                //     const updatedStations = stations.map(st =>
+                //         st.id === data.id ? data : st
+                //     );
+                //     setStations(updatedStations);
+                // }
+                // resetForm();
             })
             .catch(error => console.error('Error:', error));
-    };
+    };    
 
     const handleSearch = () => {
         searchStation();
         fetch(`http://localhost:8080/api/stations/stationId/${searchId}`)
             .then(response => {
+                console.log('Response status:', response.status);
                 if (!response.ok) {
-                    throw new Error('Station not found');
+                    throw new Error('Station not found!');
                 }
                 return response.json();
             })
-            .then(data => setStation(data))
+            .then(data => {
+                console.log('Station data:', data);
+                setStation(data);
+                setShowAddForm(true);
+            })
             .catch(error => {
                 console.error('Error fetching station:', error);
-                alert('Station not found');
+                alert('Station not found!');
             });
-    };
+    };     
     
     const searchStation = () => {
         var searchValue = searchId.toLowerCase();
@@ -206,29 +211,86 @@ const Stations = () => {
             station.stationId.toLowerCase() === searchValue || station.stationName.toLowerCase() === searchValue
         );
         if (foundStation) {
+            console.log('Found station:', foundStation);
             setStation(foundStation);
             document.getElementById("form-heading").innerText = "Edit Station";
             document.getElementById("submit-button").innerText = "Update Station";
             setShowAddForm(true);
         } else {
-            alert("Station not found");
+            alert("Station not found!!!");
         }
-    };    
+    };      
 
-    const handleDelete = () => {
-        fetch(`http://localhost:8080/api/stations/${searchId}`, {
-            method: 'DELETE',
-        })
-            .then(() => {
-                setStations(stations.filter(st => st.id !== parseInt(searchId)));
-                resetForm();
+    // const handleDelete = () => {
+    //     fetch(`http://localhost:8080/api/stations/${searchId}`, {
+    //         method: 'DELETE',
+    //     })
+    //         .then(() => {
+    //             setStations(stations.filter(st => st.id !== parseInt(searchId)));
+    //             resetForm();
+    //         })
+    //         .catch(error => console.error('Error deleting station:', error));
+    // };
+
+    // const confirmLogout = (event) => {
+    //     event.preventDefault();
+    //     const userConfirmed = window.confirm("Are you sure you want to log out?");
+    //     if (userConfirmed) {
+    //         fetch('http://localhost:8080/api/logout')
+    //             .then(response => {
+    //                 if (!response.ok) {
+    //                     throw new Error('Failed to log out');
+    //                 }
+    //                 clearInterval(intervalId);
+    //                 navigate('/convox/login');
+    //             })
+    //             .catch(error => {
+    //                 console.error('Logout error:', error);
+    //                 alert('Failed to log out');
+    //             });
+    //     }
+    // };
+
+    const confirmLogout = (event) => {
+        event.preventDefault();
+        const userConfirmed = window.confirm("Are you sure you want to log out?");
+        if (userConfirmed) {
+            const token = localStorage.getItem('jwt');
+            fetch('http://localhost:8080/api/logout', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
             })
-            .catch(error => console.error('Error deleting station:', error));
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to log out');
+                    }
+    
+                    // Clear cache and manipulate history
+                    window.localStorage.clear();
+                    window.sessionStorage.clear();
+    
+                    // Replace current URL with the login URL
+                    window.location.replace('/convox/login');
+                    
+                    // Alternatively use pushState to manipulate history
+                    window.history.pushState(null, null, '/convox/login');
+    
+                    // Clear intervals
+                    clearInterval(intervalId);
+                })
+                .catch(error => {
+                    console.error('Logout error:', error);
+                    alert('Failed to log out');
+                });
+        }
     };
 
     return (
         <div className="grid min-h-screen grid-cols-[auto,1fr] grid-rows-[auto,1fr,auto]">
-            <Helmet> <title>Dashboard - ConVox</title> </Helmet>
+            <Helmet> <title>Stations - ConVox</title> </Helmet>
             <div id="sidebar" className="sidebar bg-cyan-200 py-7 px-2 h-full overflow-y-auto transition-all duration-300 col-span-1 row-span-3">
                 <a href="#" className="toggle-btn text-grey-700 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" onClick={toggleSidebar}>
                     <i className="fas fa-bars"></i>
