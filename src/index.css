@@ -52,6 +52,11 @@
     margin: auto;
 }
 
+.action-button.top.active {
+    background-color: greenyellow;
+    color: black;
+}
+
 #search-station-id,
 #delete-search-station-id,
 #search-server-id,

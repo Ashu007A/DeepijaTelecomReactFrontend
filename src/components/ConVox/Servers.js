@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Sidebar from './Sidebar';
 import logo from '../../assets/images/ConVox/logo_convox_dashboard.png';
 
-const Stations = () => {
+const Servers = () => {
+    const [servers, setServers] = useState([]);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        // Fetch servers data
+        fetch('http://localhost:8080/api/servers')
+            .then(response => response.json())
+            .then(data => setServers(data))
+            .catch(error => console.error('Error fetching servers:', error));
+    }, []);
+
     const [stations, setStations] = useState([]);
     const [showAddForm, setShowAddForm] = useState(false);
     const [showUpdateForm, setShowUpdateForm] = useState(false);
@@ -20,13 +30,6 @@ const Stations = () => {
         updateTime();
         const interval = setInterval(updateTime, 1000);
         return () => clearInterval(interval);
-    }, []);
-
-    useEffect(() => {
-        fetch('http://localhost:8080/api/stations')
-            .then(response => response.json())
-            .then(data => setStations(data))
-            .catch(error => console.error('Error fetching stations:', error));
     }, []);
 
     const updateTime = () => {
@@ -257,7 +260,6 @@ const Stations = () => {
 
     return (
         <div className="grid min-h-screen grid-cols-[auto,1fr] grid-rows-[auto,1fr,auto]">
-            <Helmet> <title>Stations - ConVox</title> </Helmet>
             <Sidebar />
             <div className="header flex justify-between items-center bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 p-4 col-span-1 col-start-2 row-span-1">
                 <img src={logo} alt="Convox Logo Dashboard" className="h-16 w-auto object-contain ml-8" />
@@ -347,4 +349,4 @@ const Stations = () => {
     );
 };
 
-export default Stations;
+export default Servers;
