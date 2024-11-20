@@ -47,15 +47,58 @@ const Stations = () => {
         }
     };
 
+    // const handleAddStation = () => {
+    //     setActiveButton('add');
+    //     // resetForm();
+    //     setShowAddForm(true);
+    //     setShowUpdateForm(false);
+    //     setShowDeleteForm(false);
+    // };
+    
+    // const handleUpdateStation = () => {
+    //     setActiveButton('update');
+    //     setShowAddForm(false);
+    //     setShowUpdateForm(true);
+    //     setShowDeleteForm(false);
+    // };
+    
+    // const handleDeleteStation = () => {
+    //     setActiveButton('delete');
+    //     setShowAddForm(false);
+    //     setShowUpdateForm(false);
+    //     setShowDeleteForm(true);
+    // };
+    
+    // const resetForm = () => {
+    //     setStation({ stationId: '', stationName: '', activeStatus: '' });
+    //     setSearchId('');
+    //     setShowAddForm(false);
+    //     setShowUpdateForm(false);
+    //     setShowDeleteForm(false);
+    //     setActiveButton(null);
+    // };
+
+    const resetForm = (keepActiveButton = false) => {
+        setStation({ stationId: '', stationName: '', activeStatus: '' });
+        setSearchId('');
+        setShowAddForm(false);
+        setShowUpdateForm(false);
+        setShowDeleteForm(false);
+        if (!keepActiveButton) {
+            setActiveButton(null);
+        }
+    };
+    
     const handleAddStation = () => {
+        resetForm(true);
         setActiveButton('add');
-        // resetForm();
         setShowAddForm(true);
         setShowUpdateForm(false);
         setShowDeleteForm(false);
     };
     
     const handleUpdateStation = () => {
+        resetForm(true);
         setActiveButton('update');
         setShowAddForm(false);
         setShowUpdateForm(true);
@@ -63,19 +106,15 @@ const Stations = () => {
     };
     
     const handleDeleteStation = () => {
+        resetForm(true);
         setActiveButton('delete');
         setShowAddForm(false);
         setShowUpdateForm(false);
         setShowDeleteForm(true);
     };
     
-    const resetForm = () => {
-        setStation({ stationId: '', stationName: '', activeStatus: '' });
-        setSearchId('');
-        setShowAddForm(false);
-        setShowUpdateForm(false);
-        setShowDeleteForm(false);
-        setActiveButton(null);
+    const resetFormHandler = () => {
+        resetForm(false); // Ensure the active button state is reset
     };
 
     const handleChange = (e) => {
@@ -287,13 +326,13 @@ const Stations = () => {
                     <h3>Search Station to Update</h3>
                     <input type="text" id="search-station-id" placeholder="Enter Station ID or Name" value={searchId} onChange={(e) => setSearchId(e.target.value)} />
                     <button className="action-button" onClick={handleSearch}>Search</button>
-                    <button type="button" className="reset-button1" onClick={resetForm}>Cancel</button>
+                    <button type="button" className="reset-button1" onClick={resetFormHandler}>Cancel</button>
                 </div>
                 <div id="delete-station-search" style={{ display: showDeleteForm ? 'block' : 'none', textAlign: 'center' }}>
                     <h3>Search Station to Delete</h3>
                     <input type="text" id="delete-search-station-id" placeholder="Enter Station ID or Name" value={searchId} onChange={(e) => setSearchId(e.target.value)} />
                     <button className="action-button" onClick={deleteSearchStation}>Search</button>
-                    <button type="button" className="reset-button1" onClick={resetForm}>Cancel</button>
+                    <button type="button" className="reset-button1" onClick={resetFormHandler}>Cancel</button>
                 </div>
                 <div id="station-form-container" style={{ display: showAddForm ? 'block' : 'none', margin: 'auto', width: '80%' }}>
                     <form className="station-form" id="station-form" method="post" onSubmit={handleSubmit}>
@@ -315,7 +354,8 @@ const Stations = () => {
                             </select>
                         </div>
                         <button className="submit-button" id="submit-button" type="submit">Submit</button>
-                        <button type="button" className="reset-button" onClick={resetForm}>Cancel</button>
+                        {/*  <button type="button" className="reset-button" onClick={resetForm}>Cancel</button>*/}
+                        <button type="button" className="reset-button" onClick={resetFormHandler}>Cancel</button>
                     </form>
                 </div>
                 <h2 style={{ textAlign: 'center', marginTop: '40px' }}>Station List</h2>
