@@ -20,7 +20,8 @@ const Sidebar = () => {
         // Hide all sections and reset all icons
         allSections.forEach(sec => {
             if (sec !== section) {
-                sec.style.display = "none";
+                // sec.style.display = "none";
+                sec.classList.remove('show');
             }
         });
 
@@ -31,20 +32,22 @@ const Sidebar = () => {
             }
         });
 
-        if (section.style.display === "block") {
-            section.style.display = "none";
-            toggleIcon.classList.remove('fa-caret-down');
-            toggleIcon.classList.add('fa-caret-right');
-        } else {
-            section.style.display = "block";
-            toggleIcon.classList.remove('fa-caret-right');
-            toggleIcon.classList.add('fa-caret-down');
-        }
+        // if (section.style.display === "block") {
+        //     section.style.display = "none";
+        //     toggleIcon.classList.remove('fa-caret-down');
+        //     toggleIcon.classList.add('fa-caret-right');
+        // } else {
+        //     section.style.display = "block";
+        //     toggleIcon.classList.remove('fa-caret-right');
+        //     toggleIcon.classList.add('fa-caret-down');
+        // }
+
+        section.classList.toggle('show'); if (section.classList.contains('show')) { toggleIcon.classList.remove('fa-caret-right'); toggleIcon.classList.add('fa-caret-down'); } else { toggleIcon.classList.remove('fa-caret-down'); toggleIcon.classList.add('fa-caret-right'); }
     };
 
     return (
         <div id="sidebar" className="sidebar bg-cyan-200 py-7 px-2 h-full overflow-y-auto transition-all duration-300 col-span-1 row-span-3">
-            <a href="#" className="toggle-btn text-gray-700 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" onClick={toggleSidebar}>
+            <a href="#" className="toggle-btn text-gray-700 hover:bg-gray-700 hover:text-white block px-4 py-2 rounded-md text-base font-medium" onClick={toggleSidebar}>
                     <i className="fas fa-bars"></i>
                 </a>
                 <div className="menu-section">
@@ -53,7 +56,7 @@ const Sidebar = () => {
                         <span> Live Status</span>
                         <i className="fa-solid fa-caret-right toggle-icon ml-auto"></i>
                     </h3>
-                    <div className="menu-links hidden">
+                    <div className="menu-links">
                         <a href="?user_sel_menu=Process Status" className="block px-4 py-2 text-base hover:bg-gray-700 hover:text-white">
                             <i className="fas fa-cogs pr-2"></i>
                             <span>Process Status</span>
@@ -78,7 +81,7 @@ const Sidebar = () => {
                         <span>Debug Tools</span>
                         <i className="fa-solid fa-caret-right toggle-icon ml-auto"></i>
                     </h3>
-                    <div className="menu-links hidden">
+                    <div className="menu-links">
                         <a href="?user_sel_menu=ConVox Web Panel" className="block px-4 py-2 text-base hover:bg-gray-700 hover:text-white">
                             <i className="fas fa-tools pr-2"></i>
                             <span>ConVox Web Panel</span>
@@ -99,7 +102,7 @@ const Sidebar = () => {
                         <span>System Config</span>
                         <i className="fa-solid fa-caret-right toggle-icon ml-auto"></i>
                     </h3>
-                    <div className="menu-links hidden">
+                    <div className="menu-links">
                         <a href="/convox/servers" className="block px-4 py-2 text-base hover:bg-gray-700 hover:text-white">
                             <i className="fas fa-server pr-2"></i>
                             <span>Servers</span>
@@ -132,7 +135,7 @@ const Sidebar = () => {
                         <span>Call Routing</span>
                         <i className="fa-solid fa-caret-right toggle-icon ml-auto"></i>
                     </h3>
-                    <div className="menu-links hidden">
+                    <div className="menu-links">
                         <a href="?user_sel_menu=Inbound Routes" className="block px-4 py-2 text-base hover:bg-gray-700 hover:text-white">
                             <i className="fas fa-sign-in-alt pr-2"></i>
                             <span>Inbound Routes</span>
@@ -165,7 +168,7 @@ const Sidebar = () => {
                         <span>ACD and Queue</span>
                         <i className="fa-solid fa-caret-right toggle-icon ml-auto"></i>
                     </h3>
-                    <div className="menu-links hidden">
+                    <div className="menu-links">
                         <a href="?user_sel_menu=Users" className="block px-4 py-2 text-base hover:bg-gray-700 hover:text-white">
                             <i className="fas fa-users pr-2"></i>
                             <span>Users</span>
@@ -206,7 +209,7 @@ const Sidebar = () => {
                         <span>CRM</span>
                         <i className="fa-solid fa-caret-right toggle-icon ml-auto"></i>
                     </h3>
-                    <div className="menu-links hidden">
+                    <div className="menu-links">
                         <a href="?user_sel_menu=CRM" className="block px-4 py-2 text-base hover:bg-gray-700 hover:text-white">
                             <i className="fas fa-address-book pr-2"></i>
                             <span>CRM</span>
@@ -247,7 +250,7 @@ const Sidebar = () => {
                         <span>IVR</span>
                         <i className="fa-solid fa-caret-right toggle-icon ml-auto"></i>
                     </h3>
-                    <div className="menu-links hidden">
+                    <div className="menu-links">
                         <a href="?user_sel_menu=Audio Files" className="block px-4 py-2 text-base hover:bg-gray-700 hover:text-white">
                             <i className="fas fa-music pr-2"></i>
                             <span>Audio Files</span>
@@ -272,7 +275,7 @@ const Sidebar = () => {
                         <span>WhatsApp</span>
                         <i className="fa-solid fa-caret-right toggle-icon ml-auto"></i>
                     </h3>
-                    <div className="menu-links hidden">
+                    <div className="menu-links">
                         <a href="https://h248.deepijatel.in/ConVoxCMC/Internal/login_sso?agent_id=admin&password=admin" target="_blank" className="block px-4 py-2 text-base hover:bg-gray-700 hover:text-white">
                             <i className="fas fa-comments pr-2"></i>
                             <span>WhatsApp Admin</span>
@@ -285,7 +288,7 @@ const Sidebar = () => {
                         <span>Quality Module</span>
                         <i className="fa-solid fa-caret-right toggle-icon ml-auto"></i>
                     </h3>
-                    <div className="menu-links hidden">
+                    <div className="menu-links">
                         <a href="?user_sel_menu=QualityModule" className="block px-4 py-2 text-base hover:bg-gray-700 hover:text-white">
                             <i className="fas fa-star pr-2"></i>
                             <span>Quality Module</span>
@@ -298,7 +301,7 @@ const Sidebar = () => {
                         <span>Agent Analysis</span>
                         <i className="fa-solid fa-caret-right toggle-icon ml-auto"></i>
                     </h3>
-                    <div className="menu-links hidden">
+                    <div className="menu-links">
                         <a href="?user_sel_menu=Agent Login Report" className="block px-4 py-2 text-base hover:bg-gray-700 hover:text-white">
                             <i className="fas fa-sign-in-alt pr-2"></i>
                             <span>Agent Login Report</span>
@@ -331,7 +334,7 @@ const Sidebar = () => {
                         <span>Process Analysis</span>
                         <i className="fa-solid fa-caret-right toggle-icon ml-auto"></i>
                     </h3>
-                    <div className="menu-links hidden">
+                    <div className="menu-links">
                         <a href="?user_sel_menu=Process Report" className="block px-4 py-2 text-base hover:bg-gray-700 hover:text-white">
                             <i className="fas fa-chart-pie pr-2"></i>
                             <span>Process Report</span>
@@ -368,7 +371,7 @@ const Sidebar = () => {
                         <span>Call Traffic Analysis</span>
                         <i className="fa-solid fa-caret-right toggle-icon ml-auto"></i>
                     </h3>
-                    <div className="menu-links hidden">
+                    <div className="menu-links">
                         <a href="?user_sel_menu=Call Hits" className="block px-4 py-2 text-base hover:bg-gray-700 hover:text-white">
                             <i className="fas fa-phone pr-2"></i>
                             <span>Call Hits</span>
@@ -385,7 +388,7 @@ const Sidebar = () => {
                         <span>Conference Analysis</span>
                         <i className="fa-solid fa-caret-right toggle-icon ml-auto"></i>
                     </h3>
-                    <div className="menu-links hidden">
+                    <div className="menu-links">
                         <a href="?user_sel_menu=Conference Report" className="block px-4 py-2 text-base hover:bg-gray-700 hover:text-white">
                             <i className="fas fa-users pr-2"></i>
                             <span>Conference Report</span>
