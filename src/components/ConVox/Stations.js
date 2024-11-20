@@ -255,7 +255,7 @@ const Stations = () => {
                     <a href="" onClick={confirmLogout} className="bg-red-500 hover:bg-red-700 hover:-translate-y-0.5 text-white font-bold py-2 px-4 rounded">Logout</a>
                 </div>
             </div>
-            <div id="main-content" className="p-10 text-2xl font-bold bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 col-span-1 col-start-2 row-span-1">
+            <div id="main-content" className="p-5 text-2xl font-bold bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 col-span-1 col-start-2 row-span-1">
             <div className="button-container text-center my-4">
                 <button className={`action-button top ${activeButton === 'add' ? 'active' : ''}`} onClick={handleAddStation}>
                     <i className="fa fa-plus"></i> Add Station  
