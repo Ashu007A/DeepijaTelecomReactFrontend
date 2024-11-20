@@ -33,7 +33,7 @@ const ConvoxLogin = () => {
             .then((data) => {
                 localStorage.setItem('jwt', data.jwt); // Store the JWT token
                 // alert('Login successful!');
-                navigate('/dashboard');
+                navigate('/convox/dashboard');
             })
             .catch((error) => {
                 setError('Invalid username or password');
@@ -55,7 +55,7 @@ const ConvoxLogin = () => {
             <div className="flex justify-center items-center flex-grow">
                 <div className="bg-white p-6 rounded-lg shadow-lg text-center w-96">
                     <img src={logo} alt="ConVox Logo" className="w-48 h-auto mx-auto mb-4" />
-                    <h2 className="text-2xl font-bold my-4">Login</h2>
+                    {/* <h2 className="text-2xl font-bold my-4">Login</h2> */}
                     {error && <p className="text-red-500">{error}</p>}
                     <form onSubmit={handleSubmit}>
                         <div className="relative mb-4">

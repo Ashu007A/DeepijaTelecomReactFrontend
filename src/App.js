@@ -11,7 +11,7 @@ function App() {
         <Router>
             <Routes>
                 <Route path="/convox/login" element={<ConvoxLogin />} />
-                <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+                <Route path="/convox/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
                 <Route path="/convox/stations" element={<ProtectedRoute><Stations /></ProtectedRoute>} />
                 <Route path="/convox/servers" element={<ProtectedRoute><Servers /></ProtectedRoute>} />
                 <Route path="/" element={<ConvoxLogin />} />

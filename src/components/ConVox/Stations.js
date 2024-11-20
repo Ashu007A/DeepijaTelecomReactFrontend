@@ -47,37 +47,6 @@ const Stations = () => {
         }
     };
 
-    // const handleAddStation = () => {
-    //     setActiveButton('add');
-    //     // resetForm();
-    //     setShowAddForm(true);
-    //     setShowUpdateForm(false);
-    //     setShowDeleteForm(false);
-    // };
-    
-    // const handleUpdateStation = () => {
-    //     setActiveButton('update');
-    //     setShowAddForm(false);
-    //     setShowUpdateForm(true);
-    //     setShowDeleteForm(false);
-    // };
-    
-    // const handleDeleteStation = () => {
-    //     setActiveButton('delete');
-    //     setShowAddForm(false);
-    //     setShowUpdateForm(false);
-    //     setShowDeleteForm(true);
-    // };
-    
-    // const resetForm = () => {
-    //     setStation({ stationId: '', stationName: '', activeStatus: '' });
-    //     setSearchId('');
-    //     setShowAddForm(false);
-    //     setShowUpdateForm(false);
-    //     setShowDeleteForm(false);
-    //     setActiveButton(null);
-    // };
-
     const resetForm = (keepActiveButton = false) => {
         setStation({ stationId: '', stationName: '', activeStatus: '' });
         setSearchId('');
@@ -114,7 +83,7 @@ const Stations = () => {
     };
     
     const resetFormHandler = () => {
-        resetForm(false); // Ensure the active button state is reset
+        resetForm(false);
     };
 
     const handleChange = (e) => {
@@ -145,6 +114,9 @@ const Stations = () => {
                 } else {
                     alert('Failed to delete station');
                 }
+            })
+            .then(data => {
+                window.location.reload();
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -188,74 +160,47 @@ const Stations = () => {
                 // resetForm();
             })
             .catch(error => console.error('Error:', error));
-    };    
+    };
 
-    const handleSearch = () => {
-        searchStation();
-        fetch(`http://localhost:8080/api/stations/stationId/${searchId}`)
-            .then(response => {
-                console.log('Response status:', response.status);
-                if (!response.ok) {
-                    throw new Error('Station not found!');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Station data:', data);
-                setStation(data);
-                setShowAddForm(true);
-            })
-            .catch(error => {
-                console.error('Error fetching station:', error);
-                alert('Station not found!');
-            });
-    };     
+    const updateForm = (stationData) => {
+        console.log('Found station:', stationData);
+        setStation(stationData);
+        document.getElementById("form-heading").innerText = "Edit Station";
+        document.getElementById("submit-button").innerText = "Update Station";
+        setShowAddForm(true);
+    };
     
-    const searchStation = () => {
+    const handleSearch = () => {
+        if (isNaN(searchId)) {
+            searchStationByName();
+        } else {
+            fetch(`http://localhost:8080/api/stations/stationId/${searchId}`)
+                .then(response => {
+                    console.log('Response status:', response.status);
+                    if (!response.ok) {
+                        throw new Error('Station not found!');
+                    }
+                    return response.json();
+                })
+                .then(data => updateForm(data))
+                .catch(error => {
+                    console.error('Error fetching station:', error);
+                    alert('Station not found!!');
+                });
+        }
+    };
+    
+    const searchStationByName = () => {
         var searchValue = searchId.toLowerCase();
         var foundStation = stations.find(station =>
             station.stationId.toLowerCase() === searchValue || station.stationName.toLowerCase() === searchValue
         );
         if (foundStation) {
-            console.log('Found station:', foundStation);
-            setStation(foundStation);
-            document.getElementById("form-heading").innerText = "Edit Station";
-            document.getElementById("submit-button").innerText = "Update Station";
-            setShowAddForm(true);
+            updateForm(foundStation);
         } else {
             alert("Station not found!!!");
         }
-    };      
-
-    // const handleDelete = () => {
-    //     fetch(`http://localhost:8080/api/stations/${searchId}`, {
-    //         method: 'DELETE',
-    //     })
-    //         .then(() => {
-    //             setStations(stations.filter(st => st.id !== parseInt(searchId)));
-    //             resetForm();
-    //         })
-    //         .catch(error => console.error('Error deleting station:', error));
-    // };
-
-    // const confirmLogout = (event) => {
-    //     event.preventDefault();
-    //     const userConfirmed = window.confirm("Are you sure you want to log out?");
-    //     if (userConfirmed) {
-    //         fetch('http://localhost:8080/api/logout')
-    //             .then(response => {
-    //                 if (!response.ok) {
-    //                     throw new Error('Failed to log out');
-    //                 }
-    //                 clearInterval(intervalId);
-    //                 navigate('/convox/login');
-    //             })
-    //             .catch(error => {
-    //                 console.error('Logout error:', error);
-    //                 alert('Failed to log out');
-    //             });
-    //     }
-    // };
+    };    
 
     const confirmLogout = (event) => {
         event.preventDefault();
@@ -306,8 +251,8 @@ const Stations = () => {
                     <span id="server-time-text"></span>
                 </div>
                 <div className="flex space-x-4">
-                    <a href="/dashboard" className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Dashboard</a>
-                    <a href="" onClick={confirmLogout} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Logout</a>
+                    <a href="/convox/dashboard" className="bg-green-500 hover:bg-green-700 hover:-translate-y-0.5 text-white font-bold py-2 px-4 rounded">Dashboard</a>
+                    <a href="" onClick={confirmLogout} className="bg-red-500 hover:bg-red-700 hover:-translate-y-0.5 text-white font-bold py-2 px-4 rounded">Logout</a>
                 </div>
             </div>
             <div id="main-content" className="p-10 text-2xl font-bold bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 col-span-1 col-start-2 row-span-1">
@@ -334,7 +279,7 @@ const Stations = () => {
                     <button className="action-button" onClick={deleteSearchStation}>Search</button>
                     <button type="button" className="reset-button1" onClick={resetFormHandler}>Cancel</button>
                 </div>
-                <div id="station-form-container" style={{ display: showAddForm ? 'block' : 'none', margin: 'auto', width: '80%' }}>
+                <div id="station-form-container" style={{ display: showAddForm ? 'block' : 'none', margin: 'auto', width: '60%' }}>
                     <form className="station-form" id="station-form" method="post" onSubmit={handleSubmit}>
                         <h2 id="form-heading" style={{ textAlign: 'center' }}>Station Registration</h2>
                         <div className="form-group">
@@ -354,14 +299,13 @@ const Stations = () => {
                             </select>
                         </div>
                         <button className="submit-button" id="submit-button" type="submit">Submit</button>
-                        {/*  <button type="button" className="reset-button" onClick={resetForm}>Cancel</button>*/}
                         <button type="button" className="reset-button" onClick={resetFormHandler}>Cancel</button>
                     </form>
                 </div>
-                <h2 style={{ textAlign: 'center', marginTop: '40px' }}>Station List</h2>
+                <h1 style={{ textAlign: 'center', marginTop: '40px', marginBottom: '10px', fontSize: '35px'}}>Station List</h1>
                 <table className="station-table" style={{ textAlign: 'center', margin: 'auto', width: '90%' }}>
                     <thead>
-                        <tr style={{ backgroundColor: '#0171ba', color: '#fff' }}>
+                        <tr style={{ backgroundColor: '#04aa6d', color: '#fff' }}>
                             <th style={{ padding: '10px' }}>Reg. ID</th>
                             <th style={{ padding: '10px' }}>Station ID</th>
                             <th style={{ padding: '10px' }}>Station Name</th>
@@ -370,7 +314,13 @@ const Stations = () => {
                     </thead>
                     <tbody>
                         {stations.map((station, index) => (
-                            <tr key={index} style={{ backgroundColor: index % 2 === 0 ? '#f9f9f9' : '#e9e9e9' }}>
+                            <tr key={index} style={{
+                                    backgroundColor: index % 2 === 0 ? '#f9f9f9' : '#e9e9e9',
+                                    padding: '10px', cursor: 'pointer'
+                                }}
+                                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#d1e7dd'}
+                                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = index % 2 === 0 ? '#f9f9f9' : '#e9e9e9'}
+                            >  
                                 <td style={{ padding: '10px' }}>{station.id}</td>
                                 <td style={{ padding: '10px' }}>{station.stationId}</td>
                                 <td style={{ padding: '10px' }}>{station.stationName}</td>

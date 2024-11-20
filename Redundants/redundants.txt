@@ -1,0 +1,72 @@
+Stations:
+
+    // const handleSearch = () => {
+    //     searchStation();
+    //     fetch(`http://localhost:8080/api/stations/stationId/${searchId}`)
+    //         .then(response => {
+    //             console.log('Response status:', response.status);
+    //             if (!response.ok) {
+    //                 throw new Error('Station not found!');
+    //             }
+    //             return response.json();
+    //         })
+    //         .then(data => {
+    //             console.log('Station data:', data);
+    //             setStation(data);
+    //             setShowAddForm(true);
+    //         })
+    //         .catch(error => {
+    //             console.error('Error fetching station:', error);
+    //             alert('Station not found!!');
+    //         });
+    // };     
+    
+    // const searchStation = () => {
+    //     var searchValue = searchId.toLowerCase();
+    //     var foundStation = stations.find(station =>
+    //         station.stationId.toLowerCase() === searchValue || station.stationName.toLowerCase() === searchValue
+    //     );
+    //     if (foundStation) {
+    //         console.log('Found station:', foundStation);
+    //         setStation(foundStation);
+    //         document.getElementById("form-heading").innerText = "Edit Station";
+    //         document.getElementById("submit-button").innerText = "Update Station";
+    //         setShowAddForm(true);
+    //     } else {
+    //         alert("Station not found!!!");
+    //     }
+    // };
+
+    // const handleDelete = () => {
+    //     fetch(`http://localhost:8080/api/stations/${searchId}`, {
+    //         method: 'DELETE',
+    //     })
+    //         .then(() => {
+    //             setStations(stations.filter(st => st.id !== parseInt(searchId)));
+    //             resetForm();
+    //         })
+    //         .catch(error => console.error('Error deleting station:', error));
+    // };
+
+    // const confirmLogout = (event) => {
+    //     event.preventDefault();
+    //     const userConfirmed = window.confirm("Are you sure you want to log out?");
+    //     if (userConfirmed) {
+    //         fetch('http://localhost:8080/api/logout')
+    //             .then(response => {
+    //                 if (!response.ok) {
+    //                     throw new Error('Failed to log out');
+    //                 }
+    //                 clearInterval(intervalId);
+    //                 navigate('/convox/login');
+    //             })
+    //             .catch(error => {
+    //                 console.error('Logout error:', error);
+    //                 alert('Failed to log out');
+    //             });
+    //     }
+    // };
+
+
+
+

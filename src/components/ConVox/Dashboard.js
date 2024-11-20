@@ -50,25 +50,6 @@ const Dashboard = () => {
         }
     };
 
-    // const confirmLogout = (event) => {
-    //     event.preventDefault();
-    //     const userConfirmed = window.confirm("Are you sure you want to log out?");
-    //     if (userConfirmed) {
-    //         fetch('http://localhost:8080/api/logout')
-    //             .then(response => {
-    //                 if (!response.ok) {
-    //                     throw new Error('Failed to log out');
-    //                 }
-    //                 clearInterval(intervalId);
-    //                 navigate('/convox/login');
-    //             })
-    //             .catch(error => {
-    //                 console.error('Logout error:', error);
-    //                 alert('Failed to log out');
-    //             });
-    //     }
-    // };
-
     const confirmLogout = (event) => {
         event.preventDefault();
         const userConfirmed = window.confirm("Are you sure you want to log out?");
@@ -118,7 +99,7 @@ const Dashboard = () => {
                     <span id="server-time-text"></span>
                 </div>
                 <div className="flex space-x-4">
-                    <a href="/dashboard" className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Dashboard</a>
+                    {/* <a href="/dashboard" className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Dashboard</a> */}
                     <a href="" onClick={confirmLogout} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Logout</a>
                 </div>
             </div>

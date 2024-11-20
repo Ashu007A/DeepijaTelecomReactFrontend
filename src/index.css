@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom styles for the collapsed state */
+/* Sidebar Styles */
 #sidebar {
-    width: 300px;
+    width: 260px;
     padding-top: 30px;
     transition: width 0.3s;
 }
@@ -21,14 +21,16 @@
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    margin-top: 30px;
+    margin-top: 20px;
     font-size: larger;
     font-weight: bold;
 }
 .menu-section h3:hover {
-    background-color: #6ffdfd;
+    /* background-color: #6ffdfd; */
+    background-color: rgb(50, 65, 84);
+    color: white;
     height: 40px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .grid {
@@ -131,6 +133,7 @@
 .action-button i,
 .reset-button1 i{
     margin-right: 10px;
+    margin-left: 10px;
 }
 
 .action-button:hover,
@@ -142,47 +145,17 @@
 
 .action-button:active,
 .reset-button1:active {
-    /* background-color: #003f7f;  Even darker shade for active */
-    background-color: red;
+    background-color: #003f7f;
+    /* background-color: red; */
     transform: translateY(0);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.active-button {
-    background-color: green; /* Color for the active button */
-}
-
-/* Table Styles */
-.station-table,
-.server-table{
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.station-table th,
-.station-table td,
-.server-table th,
-.server-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-}
-
-.station-table th,
-.server-table th {
-    background-color: #04aa6d;
-    color: white;
-    font-weight: bold;
-}
-
-.station-table tr:nth-child(even),
-.server-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-.station-table tr:hover,
-.server-table tr:hover {
-    background-color: #dadada;
+#search-station-id,
+#delete-search-station-id,
+#search-server-id,
+#delete-server-station-id {
+    margin-right: 10px;
 }
 
 .edit-button,
