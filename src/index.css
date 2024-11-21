@@ -92,6 +92,18 @@
     margin: auto;
 }
 
+.transition-element {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 1s ease, opacity 1s ease;
+}
+
+.transition-element.show {
+    max-height: 1000px;
+    opacity: 1;
+}
+
 .action-button.top.active {
     background-color: greenyellow;
     color: black;
@@ -183,8 +195,7 @@
 
 .action-button:active,
 .reset-button1:active {
-    background-color: #003f7f;
-    /* background-color: red; */
+    background-color: #003f7f; /* Even darker for clicking */
     transform: translateY(0);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }

@@ -1,4 +1,14 @@
-<div className="menu-section">
+Servers:
+PCX4.0.2 - 172.16.13.29
+PCX3.2   - 172.16.12.177
+PCX3.2   - 172.16.13.161        
+
+
+
+
+
+
+                <div className="menu-section">
                     <h3 className="flex items-center cursor-pointer" onClick={toggleSection}>
                         <i className="fas fa-tools font-icon pr-2"></i>
                         <span>Debug Tools</span>

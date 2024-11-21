@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { useNavigate } from 'react-router-dom';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Sidebar from './Sidebar';
 import logo from '../../assets/images/ConVox/logo_convox_dashboard.png';
@@ -75,6 +74,25 @@ const Servers = () => {
             setActiveButton(null);
         }
     };
+
+    useEffect(() => {
+        const updateTransition = (id, show) => {
+            const element = document.getElementById(id);
+            if (element) {
+                if (show) {
+                    element.style.maxHeight = element.scrollHeight + 'px';
+                    element.classList.add('show');
+                } else {
+                    element.style.maxHeight = '0';
+                    element.classList.remove('show');
+                }
+            }
+        };
+    
+        updateTransition('server-form-container', showAddForm);
+        updateTransition('update-server-search', showUpdateForm);
+        updateTransition('delete-server-search', showDeleteForm);
+    }, [showAddForm, showUpdateForm, showDeleteForm]);    
     
     const handleAddServer = () => {
         resetForm(true);
@@ -102,7 +120,12 @@ const Servers = () => {
     
     const resetFormHandler = () => {
         resetForm(false);
-    };
+        setTimeout(() => {
+            setShowAddForm(false);
+            setShowUpdateForm(false);
+            setShowDeleteForm(false);
+        }, 500); // Allow transition to complete
+    };    
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -274,19 +297,19 @@ const Servers = () => {
                         <i className="fa fa-trash"></i> Delete Server  
                     </button>
                 </div>
-                <div id="update-server-search" style={{ display: showUpdateForm ? 'block' : 'none', textAlign: 'center' }}>
+                <div id="update-server-search" className={`transition-element ${showUpdateForm ? 'show' : ''}`} style={{ display: showUpdateForm ? 'block' : 'none', textAlign: 'center' }}>
                     <h3>Search Server to Update</h3>
                     <input type="text" id="search-server-id" placeholder="Enter Server ID or Name" value={searchId} onChange={(e) => setSearchId(e.target.value)} />
                     <button className="action-button" onClick={handleSearch}>Search</button>
                     <button type="button" className="reset-button1" onClick={resetFormHandler}>Cancel</button>
                 </div>
-                <div id="delete-server-search" style={{ display: showDeleteForm ? 'block' : 'none', textAlign: 'center' }}>
+                <div id="delete-server-search" className={`transition-element ${showDeleteForm ? 'show' : ''}`} style={{ display: showDeleteForm ? 'block' : 'none', textAlign: 'center' }}>
                     <h3>Search Server to Delete</h3>
                     <input type="text" id="delete-search-server-id" placeholder="Enter Server ID or Name" value={searchId} onChange={(e) => setSearchId(e.target.value)} />
                     <button className="action-button" onClick={deleteSearchServer}>Search</button>
                     <button type="button" className="reset-button1" onClick={resetFormHandler}>Cancel</button>
                 </div>
-                <div id="server-form-container" style={{ display: showAddForm ? 'block' : 'none', margin: 'auto', width: '60%' }}>
+                <div id="server-form-container" className={`transition-element ${showAddForm ? 'show' : ''}`} style={{ display: showAddForm ? 'block' : 'none', margin: 'auto', width: '60%' }}>
                     <form className="server-form" id="server-form" method="post" onSubmit={handleSubmit}>
                         <h2 id="form-heading" style={{ textAlign: 'center' }}>Server Registration</h2>
                         <div className="form-group">

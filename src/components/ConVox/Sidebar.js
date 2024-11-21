@@ -235,6 +235,10 @@ const Sidebar = () => {
                         <i className="fas fa-headset pr-2"></i>
                         <span>IvrCallback Lead Settings</span>
                     </a>
+                    <a href="#" className="block px-4 py-2 text-base hover:bg-gray-700 hover:text-white">
+                        <i className="fas fa-user-plus pr-2"></i>
+                        <span>Add Agent</span>
+                    </a>
                 </div>
             </div>
             <div className="menu-section">
@@ -272,6 +276,19 @@ const Sidebar = () => {
                     <a href="https://h248.deepijatel.in/ConVoxCMC/Internal/login_sso?agent_id=admin&password=admin" target="_blank" className="block px-4 py-2 text-base hover:bg-gray-700 hover:text-white">
                         <i className="fas fa-comments pr-2"></i>
                         <span>WhatsApp Admin</span>
+                    </a>
+                </div>
+            </div>
+            <div className="menu-section">
+                <h3 className="flex items-center cursor-pointer" onClick={toggleSection}>
+                    <i className="fas fa-envelope font-icon pr-2"></i>
+                    <span>ConVox Email</span>
+                    <i className="fa-solid fa-caret-right toggle-icon ml-auto"></i>
+                </h3>
+                <div className="menu-links">
+                    <a href="https://h248.deepijatel.in/ConVoxCMC/Internal/login_sso?agent_id=admin&password=admin" target="_blank" className="block px-4 py-2 text-base hover:bg-gray-700 hover:text-white">
+                        <i className="fas fa-envelope pr-2"></i>
+                        <span>ConVox Email</span>
                     </a>
                 </div>
             </div>
