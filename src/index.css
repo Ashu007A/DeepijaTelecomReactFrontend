@@ -8,12 +8,22 @@
     padding-top: 25px;
     transition: width 0.6s ease-in-out;
 }
+
 #sidebar.collapsed {
     width: 60px;
 }
 
 #sidebar.collapsed .menu-section span {
     display: none;
+}
+
+.sidebar .menu-section h3.active-section {
+    background-color: #81c7e2;
+    color: white;
+}
+.sidebar .menu-links a.active {
+    background-color: #4c93af;
+    color: white;
 }
 
 .toggle-btn .fa-bars {
@@ -30,7 +40,7 @@
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 10px;
     font-size: larger;
     font-weight: bold;
 }
@@ -41,7 +51,7 @@
     color: white;
     height: 40px;
     margin-top: 10px;
-    padding: 8px;
+    padding: 10px;
 }
 
 .toggle-icon {
