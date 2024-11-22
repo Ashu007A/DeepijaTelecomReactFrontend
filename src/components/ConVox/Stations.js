@@ -82,6 +82,7 @@ const Stations = () => {
         setShowUpdateForm(false);
         setShowDeleteForm(false);
     };
+
     const handleUpdateStation = () => {
         resetForm(true);
         setActiveButton('update');
@@ -89,6 +90,7 @@ const Stations = () => {
         setShowUpdateForm(true);
         setShowDeleteForm(false);
     };
+
     const handleDeleteStation = () => {
         resetForm(true);
         setActiveButton('delete');
@@ -96,6 +98,7 @@ const Stations = () => {
         setShowUpdateForm(false);
         setShowDeleteForm(true);
     };
+    
     const resetFormHandler = () => {
         resetForm(false);
         setTimeout(() => {
