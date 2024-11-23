@@ -22,7 +22,7 @@ function App() {
 
     const resetInactivityTimeout = () => {
         clearTimeout(inactivityTimeout);
-        inactivityTimeout = setTimeout(logoutUser, 1 * 60 * 1000); // 2 minutes
+        inactivityTimeout = setTimeout(logoutUser, 5 * 60 * 1000); // 5 minutes
     };
 
     const logoutUser = () => {
