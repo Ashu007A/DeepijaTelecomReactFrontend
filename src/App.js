@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import ConvoxLogin from './components/ConvoxLogin';
@@ -18,29 +18,54 @@ import Stations from './components/ConVox/3_System_Config/Stations';
 import Servers from './components/ConVox/3_System_Config/Servers';
 
 function App() {
+    let inactivityTimeout;
+
+    const resetInactivityTimeout = () => {
+        clearTimeout(inactivityTimeout);
+        inactivityTimeout = setTimeout(logoutUser, 1 * 60 * 1000); // 2 minutes
+    };
+
+    const logoutUser = () => {
+        // alert('You have been logged out due to inactivity.');
+        localStorage.clear();
+        window.location.href = '/convox/login'; // Redirect to login page
+    };
+
+    useEffect(() => {
+        window.addEventListener('mousemove', resetInactivityTimeout);
+        window.addEventListener('keypress', resetInactivityTimeout);
+
+        resetInactivityTimeout(); // Start the inactivity timeout initially
+
+        return () => {
+            window.removeEventListener('mousemove', resetInactivityTimeout);
+            window.removeEventListener('keypress', resetInactivityTimeout);
+        };
+    }, []);
+
     return (
         <Router>
             <Routes>
                 <Route path="/" element={<ConvoxLogin />} />
 
-                // Login
+                {/* Login */}
                 <Route path="/convox/login" element={<ConvoxLogin />} />
 
-                // Dashboard
+                {/* Dashboard */}
                 <Route path="/convox/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
 
-                // Live Status
+                {/* Live Status */}
                 <Route path="/convox/process-status" element={<ProtectedRoute><ProcessStatus /></ProtectedRoute>} />
                 <Route path="/convox/trunk-status" element={<ProtectedRoute><TrunkStatus /></ProtectedRoute>} />
                 <Route path="/convox/queues-status" element={<ProtectedRoute><QueuesStatus /></ProtectedRoute>} />
                 <Route path="/convox/real-time-dashboard" element={<ProtectedRoute><RealTimeDashboard /></ProtectedRoute>} />
 
-                // Debug Tools
+                {/* Debug Tools */}
                 <Route path="/convox/screens" element={<ProtectedRoute><ConVoxScreen /></ProtectedRoute>} />
                 <Route path="/convox/database-status" element={<ProtectedRoute><DatabaseStatus /></ProtectedRoute>} />
                 <Route path="/convox/web-panel" element={<ProtectedRoute><ConVoxWebPanel /></ProtectedRoute>} />
 
-                // System Config
+                {/* System Config */}
                 <Route path="/convox/servers" element={<ProtectedRoute><Servers /></ProtectedRoute>} />
                 <Route path="/convox/stations" element={<ProtectedRoute><Stations /></ProtectedRoute>} />
             </Routes>
