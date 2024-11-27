@@ -178,7 +178,7 @@ const DatabaseStatus = () => {
                 </div>
             </div>
             <div id="main-content" className="p-5 text-2xl font-bold bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 col-span-1 col-start-2 row-span-1">
-                <form className="server-form" id="server-form" style={{ margin: 'auto', width: '50%' }}>
+                <form className="server-form" id="server-form" style={{ margin: 'auto', width: '56%' }}>
                     <h2 id="form-heading" style={{ textAlign: 'center' }}>Database Status</h2>
                     <div className="mb-4">
                         <label htmlFor="server_ip">Database IP:</label>
