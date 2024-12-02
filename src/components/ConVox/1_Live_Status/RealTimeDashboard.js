@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import TopFiveAgents from './RealTimeDashboard_components/TopFiveAgents';
 import InboundCallsStatus from './RealTimeDashboard_components/InboundCallsStatus';
 import OutboundCallsStatus from './RealTimeDashboard_components/OutboundCallsStatus';
@@ -36,6 +37,9 @@ const RealTimeDashboard = () => {
 
     return (
         <div className="mx-auto p-4 bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200">
+            <Helmet>
+                <title>Real Time Dashboard - ConVox</title>
+            </Helmet>
             <header className="flex justify-between items-center mb-4">
                 <div>
                     {/* <h3><span className="text-2xl font-bold text-red-500 my-0">Con</span><span className="text-2xl font-bold text-blue-800 my-0">Vox</span></h3>

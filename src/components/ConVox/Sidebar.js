@@ -129,7 +129,7 @@ const Sidebar = () => {
                     </a>
                     <a href="/convox/real-time-dashboard" target="_blank" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Dash Board" : ""}>
                         <i className="fas fa-chart-line pr-2"></i>
-                        <span>Dash Board</span>
+                        <span>Real Time Dashboard</span>
                     </a>
                 </div>
             </div>
