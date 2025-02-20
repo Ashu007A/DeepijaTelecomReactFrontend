@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const Sidebar = () => {
@@ -105,9 +106,9 @@ const Sidebar = () => {
 
     return (
         <div id="sidebar" className="sidebar bg-cyan-200 py-7 px-2 h-full overflow-y-auto transition-all duration-300 col-span-1 row-span-3">
-            <a href="#" className="toggle-btn text-gray-700 hover:bg-gray-700 hover:text-white hover:text-lg block px-4 py-2 rounded-md text-base font-medium" onClick={toggleSidebar}>
+            <Link to="#" className="toggle-btn text-gray-700 hover:bg-gray-700 hover:text-white hover:text-lg block px-4 py-2 rounded-md text-base font-medium" onClick={toggleSidebar}>
                 <i className="fas fa-bars"></i>
-            </a>
+            </Link>
             <div className="menu-section">
                 <h3 className="flex items-center cursor-pointer px-1 py-2" onClick={toggleSection} title={isCollapsed ? "Live Status" : ""}>
                     <i className="fas fa-chart-line font-icon pr-1"></i>
@@ -115,22 +116,22 @@ const Sidebar = () => {
                     <i className="fa-solid fa-caret-right toggle-icon ml-auto"></i>
                 </h3>
                 <div className="menu-links">
-                    <a href="/convox/process-status" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Process Status" : ""}>
+                    <Link to="/convox/process-status" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Process Status" : ""}>
                         <i className="fas fa-cogs pr-2"></i>
                         <span>Process Status</span>
-                    </a>
-                    <a href="/convox/trunk-status" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Trunk Status" : ""}>
+                    </Link>
+                    <Link to="/convox/trunk-status" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Trunk Status" : ""}>
                         <i className="fas fa-network-wired pr-2"></i>
                         <span>Trunk Status</span>
-                    </a>
-                    <a href="/convox/queues-status" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Queue Status" : ""}>
+                    </Link>
+                    <Link to="/convox/queues-status" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Queue Status" : ""}>
                         <i className="fas fa-stream pr-2"></i>
                         <span>Queues Status</span>
-                    </a>
-                    <a href="/convox/real-time-dashboard" target="_blank" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Dash Board" : ""}>
+                    </Link>
+                    <Link to="/convox/real-time-dashboard" target="_blank" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Dash Board" : ""}>
                         <i className="fas fa-chart-line pr-2"></i>
                         <span>Real Time Dashboard</span>
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div className="menu-section">
@@ -140,18 +141,18 @@ const Sidebar = () => {
                     <i className="fa-solid fa-caret-right toggle-icon ml-auto"></i>
                 </h3>
                 <div className="menu-links">
-                    <a href="/convox/web-panel" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "ConVox Web Panel" : ""}>
+                    <Link to="/convox/web-panel" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "ConVox Web Panel" : ""}>
                         <i className="fas fa-tools pr-2"></i>
                         <span>ConVox Web Panel</span>
-                    </a>
-                    <a href="/convox/database-status" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Database Status" : ""}>
+                    </Link>
+                    <Link to="/convox/database-status" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Database Status" : ""}>
                         <i className="fas fa-database pr-2"></i>
                         <span>Database Status</span>
-                    </a>
-                    <a href="/convox/screens" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "ConVox Screens" : ""}>
+                    </Link>
+                    <Link to="/convox/screens" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "ConVox Screens" : ""}>
                         <i className="fas fa-tv pr-2"></i>
                         <span>ConVox Screens</span>
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div className="menu-section">
@@ -161,30 +162,30 @@ const Sidebar = () => {
                     <i className="fa-solid fa-caret-right toggle-icon ml-auto"></i>
                 </h3>
                 <div className="menu-links">
-                    <a href="/convox/servers" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Servers" : ""}>
+                    <Link to="/convox/servers" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Servers" : ""}>
                         <i className="fas fa-server pr-2"></i>
                         <span>Servers</span>
-                    </a>
-                    <a href="/convox/web-servers" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Web Servers" : ""}>
+                    </Link>
+                    <Link to="/convox/web-servers" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Web Servers" : ""}>
                         <i className="fas fa-globe pr-2"></i>
                         <span>Web Servers</span>
-                    </a>
-                    <a href="/convox/stations" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Stations" : ""}>
+                    </Link>
+                    <Link to="/convox/stations" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Stations" : ""}>
                         <i className="fas fa-network-wired pr-2"></i>
                         <span>Stations</span>
-                    </a>
-                    <a href="/convox/internal-stations" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Internal Stations" : ""}>
+                    </Link>
+                    <Link to="/convox/internal-stations" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Internal Stations" : ""}>
                         <i className="fas fa-sitemap pr-2"></i>
                         <span>Internal Stations</span>
-                    </a>
-                    <a href="/convox/lock-out-release" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Lock Out Release" : ""}>
+                    </Link>
+                    <Link to="/convox/lock-out-release" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Lock Out Release" : ""}>
                         <i className="fas fa-unlock-alt pr-2"></i>
                         <span>Lock Out Release</span>
-                    </a>
-                    <a href="/convox/lockout-settings" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Lockout Settings" : ""}>
+                    </Link>
+                    <Link to="/convox/lockout-settings" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Lockout Settings" : ""}>
                         <i className="fas fa-cog pr-2"></i>
                         <span>Lockout Settings</span>
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div className="menu-section">
@@ -194,30 +195,30 @@ const Sidebar = () => {
                     <i className="fa-solid fa-caret-right toggle-icon ml-auto"></i>
                 </h3>
                 <div className="menu-links">
-                    <a href="/convox/inbound-routes" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Inbound Routes" : ""}>
+                    <Link to="/convox/inbound-routes" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Inbound Routes" : ""}>
                         <i className="fas fa-sign-in-alt pr-2"></i>
                         <span>Inbound Routes</span>
-                    </a>
-                    <a href="/convox/outbound-trunks" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Outbound Trunks" : ""}>
+                    </Link>
+                    <Link to="/convox/outbound-trunks" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Outbound Trunks" : ""}>
                         <i className="fas fa-sign-out-alt pr-2"></i>
                         <span>Outbound Trunks</span>
-                    </a>
-                    <a href="/convox/outbound-routes" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Outbound Routes" : ""}>
+                    </Link>
+                    <Link to="/convox/outbound-routes" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Outbound Routes" : ""}>
                         <i className="fas fa-route pr-2"></i>
                         <span>Outbound Routes</span>
-                    </a>
-                    <a href="/convox/call-forward-routes" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Call Forward Routes" : ""}>
+                    </Link>
+                    <Link to="/convox/call-forward-routes" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Call Forward Routes" : ""}>
                         <i className="fas fa-forward pr-2"></i>
                         <span>Call Forward Routes</span>
-                    </a>
-                    <a href="/convox/hot-transfer-routes" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Hot Transfer Routes" : ""}>
+                    </Link>
+                    <Link to="/convox/hot-transfer-routes" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Hot Transfer Routes" : ""}>
                         <i className="fas fa-random pr-2"></i>
                         <span>Hot Transfer Routes</span>
-                    </a>
-                    <a href="/convox/service-providers" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Service Providers" : ""}>
+                    </Link>
+                    <Link to="/convox/service-providers" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Service Providers" : ""}>
                         <i className="fas fa-concierge-bell pr-2"></i>
                         <span>Service Providers</span>
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div className="menu-section">
@@ -227,38 +228,38 @@ const Sidebar = () => {
                     <i className="fa-solid fa-caret-right toggle-icon ml-auto"></i>
                 </h3>
                 <div className="menu-links">
-                    <a href="/convox/users" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Users" : ""}>
+                    <Link to="/convox/users" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Users" : ""}>
                         <i className="fas fa-users pr-2"></i>
                         <span>Users</span>
-                    </a>
-                    <a href="/convox/process" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Process" : ""}>
+                    </Link>
+                    <Link to="/convox/process" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Process" : ""}>
                         <i className="fas fa-tasks pr-2"></i>
                         <span>Process</span>
-                    </a>
-                    <a href="/convox/queues" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Queues" : ""}>
+                    </Link>
+                    <Link to="/convox/queues" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Queues" : ""}>
                         <i className="fas fa-stream pr-2"></i>
                         <span>Queues</span>
-                    </a>
-                    <a href="/convox/breaks" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Breaks" : ""}>
+                    </Link>
+                    <Link to="/convox/breaks" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Breaks" : ""}>
                         <i className="fas fa-coffee pr-2"></i>
                         <span>Breaks</span>
-                    </a>
-                    <a href="/convox/dispositions" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Dispositions" : ""}>
+                    </Link>
+                    <Link to="/convox/dispositions" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Dispositions" : ""}>
                         <i className="fas fa-clipboard-list pr-2"></i>
                         <span>Dispositions</span>
-                    </a>
-                    <a href="/convox/sub-disposition" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Sub Disposition" : ""}>
+                    </Link>
+                    <Link to="/convox/sub-disposition" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Sub Disposition" : ""}>
                         <i className="fas fa-clipboard-check pr-2"></i>
                         <span>Sub Disposition</span>
-                    </a>
-                    <a href="/convox/sub-sub-disposition" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Sub-Sub Disposition" : ""}>
+                    </Link>
+                    <Link to="/convox/sub-sub-disposition" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Sub-Sub Disposition" : ""}>
                         <i className="fas fa-clipboard pr-2"></i>
                         <span>Sub-Sub Disposition</span>
-                    </a>
-                    <a href="/convox/lead-re-attempts" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Lead Re-Attempts" : ""}>
+                    </Link>
+                    <Link to="/convox/lead-re-attempts" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Lead Re-Attempts" : ""}>
                         <i className="fas fa-redo-alt pr-2"></i>
                         <span>Lead Re-Attempts</span>
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div className="menu-section">
@@ -268,42 +269,42 @@ const Sidebar = () => {
                     <i className="fa-solid fa-caret-right toggle-icon ml-auto"></i>
                 </h3>
                 <div className="menu-links">
-                    <a href="/convox/crm" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "CRM" : ""}>
+                    <Link to="/convox/crm" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "CRM" : ""}>
                         <i className="fas fa-address-book pr-2"></i>
                         <span>CRM</span>
-                    </a>
-                    <a href="/convox/lists" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Lists" : ""}>
+                    </Link>
+                    <Link to="/convox/lists" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Lists" : ""}>
                         <i className="fas fa-list pr-2"></i>
                         <span>Lists</span>
-                    </a>
-                    <a href="/convox/callback-assignments" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Callback Assignments" : ""}>
+                    </Link>
+                    <Link to="/convox/callback-assignments" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Callback Assignments" : ""}>
                         <i className="fas fa-phone-alt pr-2"></i>
                         <span>Callback Assignments</span>
-                    </a>
-                    <a href="/convox/scripts" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Scripts" : ""}>
+                    </Link>
+                    <Link to="/convox/scripts" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Scripts" : ""}>
                         <i className="fas fa-file-alt pr-2"></i>
                         <span>Scripts</span>
-                    </a>
-                    <a href="/convox/block-caller" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Block Caller" : ""}>
+                    </Link>
+                    <Link to="/convox/block-caller" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Block Caller" : ""}>
                         <i className="fas fa-ban pr-2"></i>
                         <span>Block Caller</span>
-                    </a>
-                    <a href="/convox/custom-missed-settings" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Custom Missed Settings" : ""}>
+                    </Link>
+                    <Link to="/convox/custom-missed-settings" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Custom Missed Settings" : ""}>
                         <i className="fas fa-cogs pr-2"></i>
                         <span>Custom Missed Settings</span>
-                    </a>
-                    <a href="/convox/auto-email-settings" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Auto Email Settings" : ""}>
+                    </Link>
+                    <Link to="/convox/auto-email-settings" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Auto Email Settings" : ""}>
                         <i className="fas fa-envelope pr-2"></i>
                         <span>Auto Email Settings</span>
-                    </a>
-                    <a href="/convox/ivr-callback-lead-settings" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "IVR-Callback Lead Settings" : ""}>
+                    </Link>
+                    <Link to="/convox/ivr-callback-lead-settings" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "IVR-Callback Lead Settings" : ""}>
                         <i className="fas fa-headset pr-2"></i>
                         <span>IVR-Callback Lead Settings</span>
-                    </a>
-                    <a href="/convox/add-agent" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Add agent" : ""}>
+                    </Link>
+                    <Link to="/convox/add-agent" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Add agent" : ""}>
                         <i className="fas fa-user-plus pr-2"></i>
                         <span>Add Agent</span>
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div className="menu-section">
@@ -313,22 +314,22 @@ const Sidebar = () => {
                     <i className="fa-solid fa-caret-right toggle-icon ml-auto"></i>
                 </h3>
                 <div className="menu-links">
-                    <a href="/convox/audio-files" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Audio Files" : ""}>
+                    <Link to="/convox/audio-files" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Audio Files" : ""}>
                         <i className="fas fa-music pr-2"></i>
                         <span>Audio Files</span>
-                    </a>
-                    <a href="/convox/recoding-studio" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Recording Studio" : ""}>
+                    </Link>
+                    <Link to="/convox/recoding-studio" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Recording Studio" : ""}>
                         <i className="fas fa-microphone pr-2"></i>
                         <span>Recording Studio</span>
-                    </a>
-                    <a href="/convox/ivrs" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "IVRS" : ""}>
+                    </Link>
+                    <Link to="/convox/ivrs" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "IVRS" : ""}>
                         <i className="fas fa-voicemail pr-2"></i>
                         <span>IVRS</span>
-                    </a>
-                    <a href="/convox/customer-feedback" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Customer Feedback" : ""}>
+                    </Link>
+                    <Link to="/convox/customer-feedback" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Customer Feedback" : ""}>
                         <i className="fas fa-comments pr-2"></i>
                         <span>Customer Feedback</span>
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div className="menu-section">
@@ -338,10 +339,10 @@ const Sidebar = () => {
                     <i className="fa-solid fa-caret-right toggle-icon ml-auto"></i>
                 </h3>
                 <div className="menu-links">
-                    <a href="https://h248.deepijatel.in/ConVoxCMC/Internal/login_sso?agent_id=admin&password=admin" target="_blank" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "WhatsApp Admin" : ""}>
+                    <Link to="https://h248.deepijatel.in/ConVoxCMC/Internal/login_sso?agent_id=admin&password=admin" target="_blank" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "WhatsApp Admin" : ""}>
                         <i className="fas fa-comments pr-2"></i>
                         <span>WhatsApp Admin</span>
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div className="menu-section">
@@ -351,10 +352,10 @@ const Sidebar = () => {
                     <i className="fa-solid fa-caret-right toggle-icon ml-auto"></i>
                 </h3>
                 <div className="menu-links">
-                    <a href="https://h248.deepijatel.in/ConVoxCMC/Internal/login_sso?agent_id=admin&password=admin" target="_blank" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "ConVox Email" : ""}>
+                    <Link to="https://h248.deepijatel.in/ConVoxCMC/Internal/login_sso?agent_id=admin&password=admin" target="_blank" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "ConVox Email" : ""}>
                         <i className="fas fa-envelope pr-2"></i>
                         <span>ConVox Email</span>
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div className="menu-section">
@@ -364,10 +365,10 @@ const Sidebar = () => {
                     <i className="fa-solid fa-caret-right toggle-icon ml-auto"></i>
                 </h3>
                 <div className="menu-links">
-                    <a href="/convox/quality-module" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Quality Module" : ""}>
+                    <Link to="/convox/quality-module" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Quality Module" : ""}>
                         <i className="fas fa-star pr-2"></i>
                         <span>Quality Module</span>
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div className="menu-section">
@@ -377,30 +378,30 @@ const Sidebar = () => {
                     <i className="fa-solid fa-caret-right toggle-icon ml-auto"></i>
                 </h3>
                 <div className="menu-links">
-                    <a href="/convox/agent-login-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Agent Login Report" : ""}>
+                    <Link to="/convox/agent-login-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Agent Login Report" : ""}>
                         <i className="fas fa-sign-in-alt pr-2"></i>
                         <span>Agent Login Report</span>
-                    </a>
-                    <a href="/convox/agent-performance-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Agent Performance Report" : ""}>
+                    </Link>
+                    <Link to="/convox/agent-performance-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Agent Performance Report" : ""}>
                         <i className="fas fa-chart-line pr-2"></i>
                         <span>Agent Performance Report</span>
-                    </a>
-                    <a href="/convox/agent-disposition-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Agent Disposition Report" : ""}>
+                    </Link>
+                    <Link to="/convox/agent-disposition-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Agent Disposition Report" : ""}>
                         <i className="fas fa-user-tag pr-2"></i>
                         <span>Agent Disposition Report</span>
-                    </a>
-                    <a href="/convox/queue-performance-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Queue Performance Report" : ""}>
+                    </Link>
+                    <Link to="/convox/queue-performance-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Queue Performance Report" : ""}>
                         <i className="fas fa-tasks pr-2"></i>
                         <span>Queue Performance Report</span>
-                    </a>
-                    <a href="/convox/leads-summary-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Leads Summary Report" : ""}>
+                    </Link>
+                    <Link to="/convox/leads-summary-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Leads Summary Report" : ""}>
                         <i className="fas fa-list-ul pr-2"></i>
                         <span>Leads Summary Report</span>
-                    </a>
-                    <a href="/convox/agent-lockout-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Agent Lockout Report" : ""}>
+                    </Link>
+                    <Link to="/convox/agent-lockout-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Agent Lockout Report" : ""}>
                         <i className="fas fa-lock pr-2"></i>
                         <span>Agent Lockout Report</span>
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div className="menu-section">
@@ -410,34 +411,34 @@ const Sidebar = () => {
                     <i className="fa-solid fa-caret-right toggle-icon ml-auto"></i>
                 </h3>
                 <div className="menu-links">
-                    <a href="/convox/process-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Process Report" : ""}>
+                    <Link to="/convox/process-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Process Report" : ""}>
                         <i className="fas fa-chart-pie pr-2"></i>
                         <span>Process Report</span>
-                    </a>
-                    <a href="/convox/predictive-outbound-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Predictive Outbound Report" : ""}>
+                    </Link>
+                    <Link to="/convox/predictive-outbound-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Predictive Outbound Report" : ""}>
                         <i className="fas fa-chart-bar pr-2"></i>
                         <span>Predictive Outbound Report</span>
-                    </a>
-                    <a href="/convox/preview-outbound-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Preview Outbound Report" : ""}>
+                    </Link>
+                    <Link to="/convox/preview-outbound-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Preview Outbound Report" : ""}>
                         <i className="fas fa-chart-area pr-2"></i>
                         <span>Preview Outbound Report</span>
-                    </a>
-                    <a href="/convox/progressive-outbound-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Progressive Outbound Report" : ""}>
+                    </Link>
+                    <Link to="/convox/progressive-outbound-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Progressive Outbound Report" : ""}>
                         <i className="fas fa-chart-line pr-2"></i>
                         <span>Progressive Outbound Report</span>
-                    </a>
-                    <a href="/convox/call-recording-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Call Recording Report" : ""}>
+                    </Link>
+                    <Link to="/convox/call-recording-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Call Recording Report" : ""}>
                         <i className="fas fa-microphone-alt pr-2"></i>
                         <span>Call Recording Report</span>
-                    </a>
-                    <a href="/convox/dnc-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "DNC Report" : ""}>
+                    </Link>
+                    <Link to="/convox/dnc-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "DNC Report" : ""}>
                         <i className="fas fa-ban pr-2"></i>
                         <span>DNC Report</span>
-                    </a>
-                    <a href="/convox/cdr-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "CDR Report" : ""}>
+                    </Link>
+                    <Link to="/convox/cdr-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "CDR Report" : ""}>
                         <i className="fas fa-file-alt pr-2"></i>
                         <span>CDR Report</span>
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div className="menu-section">
@@ -447,14 +448,14 @@ const Sidebar = () => {
                     <i className="fa-solid fa-caret-right toggle-icon ml-auto"></i>
                 </h3>
                 <div className="menu-links">
-                    <a href="/convox/call-hits" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Call Hits" : ""}>
+                    <Link to="/convox/call-hits" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Call Hits" : ""}>
                         <i className="fas fa-phone pr-2"></i>
                         <span>Call Hits</span>
-                    </a>
-                    <a href="/convox/follow-up-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Follow-Up Report" : ""}>
+                    </Link>
+                    <Link to="/convox/follow-up-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Follow-Up Report" : ""}>
                         <i className="fas fa-file-alt pr-2"></i>
                         <span>Follow-Up Report</span>
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div className="menu-section">
@@ -464,10 +465,10 @@ const Sidebar = () => {
                     <i className="fa-solid fa-caret-right toggle-icon ml-auto"></i>
                 </h3>
                 <div className="menu-links">
-                    <a href="/convox/conference-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Conference Report" : ""}>
+                    <Link to="/convox/conference-report" className="block px-3 py-1 text-base hover:bg-gray-700 hover:text-white" title={isCollapsed ? "Conference Report" : ""}>
                         <i className="fas fa-users pr-2"></i>
                         <span>Conference Report</span>
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>

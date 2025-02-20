@@ -1,0 +1,12 @@
+ConVox Servers:
+
+PCX4.0.2 (ahmed)[ahmed@321]         - 172.16.12.192
+PCX4.0.2 (jayasimha)[jayasimha@321] - 172.17.12.154
+PCX4.0.2 (root)[dtel123]            - 172.17.12.119
+PCX4.0.2 (Saidulu)[saidulu@@321]    - 172.16.13.29
+
+Frontend:
+PCX3.2                              - 172.16.12.177
+PCX3.2 (Ayush)                      - 172.16.13.135
+PCX3.2 (Bhuneshwari)                - 172.21.21.241
+PCX3.2                              - 172.16.13.161

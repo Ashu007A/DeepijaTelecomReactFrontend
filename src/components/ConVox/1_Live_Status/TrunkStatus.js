@@ -91,7 +91,7 @@ const TrunkStatus = () => {
                 </div>
             </div>
             <div id="main-content" className="p-5 text-2xl font-bold bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 col-span-1 col-start-2 row-span-1">
-                <h1 className="text-center mb-4">Trunk Status</h1>
+                <h1 className="text-center text-3xl font-bold">Trunk Status</h1>
                 {/* Content goes here */}
             </div>
             <div className="footer text-gray-500 text-center py-2 col-span-1 col-start-2 row-span-1 bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200">
